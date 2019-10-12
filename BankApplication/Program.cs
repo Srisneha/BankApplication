@@ -47,10 +47,25 @@ namespace BankApplication
                         Console.WriteLine($"AN:{account.AccountNumber}, CD: {account.CreatedDate}, AT :{account.AccountType}, B: {account.Balance},EA :{account.EmailAddress}");
                         break;
                     case "2":
+                        PrintAllAcoounts();
+                        Console.Write("Account number");
+                        var accountNumber = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Amount to deposit:");
+                        amount = Convert.ToDecimal(Console.ReadLine());
+                        Bank.Deposit(accountNumber, amount);
+                        Console.WriteLine("Deposited successfully");
                         break;
                     case "3":
+                        PrintAllAcoounts();
+                        Console.Write("Account number");
+                        var accountNum = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Amount to withdraw:");
+                        amount = Convert.ToDecimal(Console.ReadLine());
+                        Bank.Withdraw(accountNum, amount);
+                        Console.WriteLine("Withdraw successfully");
                         break;
                     case "4":
+                        PrintAllAcoounts();
                         break;
                     default:
                         Console.WriteLine("Please select a valid option");
@@ -62,6 +77,20 @@ namespace BankApplication
 
 
 
+        }
+
+        private static void PrintAllAcoounts()
+        {
+            Console.Write("EmailAddress: ");
+            var emailAddress = Console.ReadLine();
+            var accounts
+               = Bank.GetAllAccountsByEmailAddress(emailAddress);
+            foreach (var myaccount in accounts)
+            {
+                Console.WriteLine($"AN:{myaccount.AccountNumber}, CD: {myaccount.CreatedDate}, AT :{myaccount.AccountType}, B: {myaccount.Balance},EA :{myaccount.EmailAddress}");
+
+
+            }
         }
     }
 }
