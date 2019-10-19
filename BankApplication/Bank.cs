@@ -49,7 +49,7 @@ namespace BankApplication
                 TransactionTpe = TypeOfTransaction.Credit,
                 Description = "Deposit",
                 Balance = account.Balance
-            }
+            };
 
         }
         public static void Withdraw(int accountNumer, decimal amount)
