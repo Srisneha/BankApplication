@@ -7,11 +7,11 @@ namespace BankApplication
 {
     static class Bank
     {
-        private static List<Account> accounts = new List<Account>();
-        private static List<Transaction> transactions = new List<Transaction>();
+        private static BankContext db = new BankContext();
 
-        public static Account CreateAccount(string emailAddress, TypeOfAccounts accountType, decimal initialDeposit)
+        public static Account CreateAccount(string accountName,string emailAddress, TypeOfAccounts accountType=TypeOfAccounts.Checking, decimal initialDeposit =0)
         {
+            
             var account = new Account
             {
                 EmailAddress = emailAddress,
@@ -22,19 +22,27 @@ namespace BankApplication
                 account.Deposit(initialDeposit);
 
             }
-            accounts.Add(account);
+            db.Accounts.Add(account);
+            db.SaveChanges();
             return account;
         }
         public static IEnumerable<Account> GetAllAccountsByEmailAddress(string emailAddress)
         {
-             return accounts.Where(a => a.EmailAddress == emailAddress);
+             return db.Accounts.Where(a => a.EmailAddress == emailAddress);
            
+        }
+        
+        public static IEnumerable<Transaction> GetAllTransactionByAccountNumber(int accountNumber)
+        {
+            return db.Transactions.Where(t => t.AccountNumber == accountNumber)
+                .OrderByDescending(t=> t.TransactionDate);
+
         }
 
         public static void Deposit(int accountNumer, decimal amount)
 
         {
-           var account = accounts.SingleOrDefault(a => a.AccountNumber == accountNumer);
+           var account = db.Accounts.SingleOrDefault(a => a.AccountNumber == accountNumer);
             if(account == null)
             {
                 //throw exception 
@@ -50,12 +58,14 @@ namespace BankApplication
                 Description = "Deposit",
                 Balance = account.Balance
             };
+            db.Transactions.Add(transaction);
+            db.SaveChanges();
 
         }
         public static void Withdraw(int accountNumer, decimal amount)
 
         {
-            var account = accounts.SingleOrDefault(a => a.AccountNumber == accountNumer);
+            var account = db.Accounts.SingleOrDefault(a => a.AccountNumber == accountNumer);
             if (account == null)
             {
                 //throw exception 

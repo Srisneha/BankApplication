@@ -23,12 +23,12 @@ namespace BankApplication
     {
         #region Properties
         public int AccountNumber { get; set; }
-        public decimal Balance { get; private set; }
+        public decimal Balance { get;  set; }
         public string EmailAddress { get; set; }
         public TypeOfAccounts AccountType { get; set; }
-        public DateTime CreatedDate { get; private set; }
+        public DateTime CreatedDate { get;  set; }
         #endregion
-        private static int lastAccountNumber = 0;
+        
 
 
 
@@ -36,7 +36,6 @@ namespace BankApplication
 
         public Account()
         {
-            AccountNumber = ++lastAccountNumber;
 
             CreatedDate = DateTime.Now;
         }
@@ -56,6 +55,8 @@ namespace BankApplication
 
         public void Withdraw(decimal amount)
         {
+            if (amount > Balance)
+                throw new ArgumentOutOfRangeException("amount", "Insufficient funds!");
             Balance -= amount;
 
         }

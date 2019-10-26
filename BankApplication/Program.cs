@@ -17,6 +17,7 @@ namespace BankApplication
                 Console.WriteLine("2. Deposit");
                 Console.WriteLine("3. Withdraw");
                 Console.WriteLine("4. Print all account");
+                Console.WriteLine("5.Get all Transactions");
 
                 var option = Console.ReadLine();
 
@@ -28,6 +29,8 @@ namespace BankApplication
                     case "1":
                         Console.Write("Email Address:");
                         var email= Console.ReadLine();
+                        Console.WriteLine("Account Name:");
+                        var accountName = Console.ReadLine();
                         Console.WriteLine("Account type: ");
                         //Convert enum to array
                         var accountTypes = Enum.GetNames(typeof(TypeOfAccounts));
@@ -43,7 +46,7 @@ namespace BankApplication
                         Console.Write("Initial Deposit: ");
                         var amount = Convert.ToDecimal(Console.ReadLine());
 
-                       var account = Bank.CreateAccount(email, accountType, amount);
+                       var account = Bank.CreateAccount(accountName, email, accountType, amount);
                         Console.WriteLine($"AN:{account.AccountNumber}, CD: {account.CreatedDate}, AT :{account.AccountType}, B: {account.Balance},EA :{account.EmailAddress}");
                         break;
                     case "2":
@@ -66,6 +69,12 @@ namespace BankApplication
                         break;
                     case "4":
                         PrintAllAcoounts();
+                        break;
+                    case "5":
+                        Console.WriteLine("account Number:");
+                        var acctNumber = Convert.ToInt32(Console.ReadLine());
+                        var transactions = Bank.GetAllTransactionByAccountNumber(acctNumber);
+
                         break;
                     default:
                         Console.WriteLine("Please select a valid option");
