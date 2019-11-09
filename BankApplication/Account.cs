@@ -12,14 +12,14 @@ namespace BankApplication
     /// money from it
     /// </summary>
     /// 
-    enum TypeOfAccounts
+  public  enum TypeOfAccounts
     {
         Checking,
         Savings,
         CD,
         Loan
     }
-    class Account
+   public class Account
     {
         #region Properties
         public int AccountNumber { get; set; }

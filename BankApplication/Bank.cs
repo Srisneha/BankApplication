@@ -5,11 +5,11 @@ using System.Text;
 
 namespace BankApplication
 {
-    static class Bank
+    public static class Bank
     {
         private static BankContext db = new BankContext();
 
-        public static Account CreateAccount(string accountName,string emailAddress, TypeOfAccounts accountType=TypeOfAccounts.Checking, decimal initialDeposit =0)
+        public static Account CreateAccount(string emailAddress, TypeOfAccounts accountType=TypeOfAccounts.Checking, decimal initialDeposit =0)
         {
             
             var account = new Account
