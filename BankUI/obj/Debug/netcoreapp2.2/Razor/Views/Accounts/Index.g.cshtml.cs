@@ -23,8 +23,13 @@ using BankUI.Models;
 
 #line default
 #line hidden
+#line 4 "C:\Users\skrishn24\source\repos\BankApplication\BankUI\Views\_ViewImports.cshtml"
+using BankApplication;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"36b05b0f1ce89390fe5396a4ad23aec230bc712f", @"/Views/Accounts/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7cde25da5741bcd468134d5589113bb58656aed8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8e4b9f0155c7bbbe09a3a9b6b7d210693749ac85", @"/Views/_ViewImports.cshtml")]
     public class Views_Accounts_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<BankApplication.Account>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -66,7 +71,7 @@ using BankUI.Models;
             WriteLiteral("\r\n<h2>Index</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(117, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36b05b0f1ce89390fe5396a4ad23aec230bc712f4721", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36b05b0f1ce89390fe5396a4ad23aec230bc712f4868", async() => {
                 BeginContext(140, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -176,7 +181,7 @@ using BankUI.Models;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(1171, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36b05b0f1ce89390fe5396a4ad23aec230bc712f9939", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36b05b0f1ce89390fe5396a4ad23aec230bc712f10086", async() => {
                 BeginContext(1227, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -211,7 +216,7 @@ using BankUI.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(1255, 70, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36b05b0f1ce89390fe5396a4ad23aec230bc712f12298", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36b05b0f1ce89390fe5396a4ad23aec230bc712f12446", async() => {
                 BeginContext(1314, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -246,7 +251,7 @@ using BankUI.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(1345, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36b05b0f1ce89390fe5396a4ad23aec230bc712f14664", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36b05b0f1ce89390fe5396a4ad23aec230bc712f14812", async() => {
                 BeginContext(1403, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

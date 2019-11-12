@@ -9,7 +9,7 @@ namespace BankApplication
     {
         private static BankContext db = new BankContext();
 
-        public static Account CreateAccount(string emailAddress, TypeOfAccounts accountType=TypeOfAccounts.Checking, decimal initialDeposit =0)
+        public static Account CreateAccount(string emailAddress, TypeOfAccounts accountType, decimal initialDeposit=0)
         {
             
             var account = new Account
