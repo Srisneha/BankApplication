@@ -75,6 +75,20 @@ namespace BankApplication
             account.Withdraw(amount);
 
         }
+
+        public static Account GetAccountByAccountNumber(int accountNumber)
+        {
+           return db.Accounts.Find(accountNumber);
+        }
+
+        public static void UpdateAccount(Account updatedAccount)
+        {
+            var oldAccount = GetAccountByAccountNumber(updatedAccount.AccountNumber);
+            oldAccount.EmailAddress = updatedAccount.EmailAddress;
+            oldAccount.AccountType = updatedAccount.AccountType;
+            db.SaveChanges();
+
+        }
     }
 
    
