@@ -28,6 +28,10 @@ namespace BankApplication
         }
         public static IEnumerable<Account> GetAllAccountsByEmailAddress(string emailAddress)
         {
+            if(string.IsNullOrEmpty(emailAddress)|| string.IsNullOrWhiteSpace(emailAddress.Trim()))
+            {
+                throw new ArgumentNullException("emailAddress", "Email adress is required");
+            }
              return db.Accounts.Where(a => a.EmailAddress == emailAddress);
            
         }
@@ -54,7 +58,7 @@ namespace BankApplication
             {
                 TransactionDate = DateTime.Now,
                 Amount = amount,
-                TransactionTpe = TypeOfTransaction.Credit,
+                TransactionTpe = TypeOfTransaction.Debit,
                 Description = "Deposit",
                 Balance = account.Balance
             };
@@ -73,6 +77,16 @@ namespace BankApplication
             }
 
             account.Withdraw(amount);
+            var transaction1 = new Transaction
+            {
+                TransactionDate = DateTime.Now,
+                Amount = amount,
+                TransactionTpe = TypeOfTransaction.Debit,
+                Description = "Deposit",
+                Balance = account.Balance
+            };
+            db.Transactions.Add(transaction1);
+            db.SaveChanges();
 
         }
 

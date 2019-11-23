@@ -56,7 +56,7 @@ namespace BankApplication
         public void Withdraw(decimal amount)
         {
             if (amount > Balance)
-                throw new ArgumentOutOfRangeException("amount", "Insufficient funds!");
+                throw new ArgumentOutOfRangeException("amount", "Insufficient funds!"); //raising exception
             Balance -= amount;
 
         }

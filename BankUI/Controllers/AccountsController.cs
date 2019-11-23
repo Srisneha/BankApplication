@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BankApplication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace BankUI.Controllers
 {
@@ -31,8 +32,7 @@ namespace BankUI.Controllers
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.AccountNumber == id);
+            var account = Bank.GetAccountByAccountNumber(id.Value);
             if (account == null)
             {
                 return NotFound();
@@ -92,37 +92,24 @@ namespace BankUI.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
+                
                     Bank.UpdateAccount(account);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountExists(account.AccountNumber))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                   return RedirectToAction(nameof(Index));
             }
             return View(account);
         }
 
-        // GET: Accounts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        
+        //Get
+
+       public IActionResult Deposit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.AccountNumber == id);
-            if (account == null)
+            var account = Bank.GetAccountByAccountNumber(id.Value);
+            if(account == null)
             {
                 return NotFound();
             }
@@ -130,20 +117,18 @@ namespace BankUI.Controllers
             return View(account);
         }
 
-        // POST: Accounts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var account = await _context.Accounts.FindAsync(id);
-            _context.Accounts.Remove(account);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        [HttpPost]
 
-        private bool AccountExists(int id)
+        public IActionResult Deposit(IFormCollection controls)
         {
-            return _context.Accounts.Any(e => e.AccountNumber == id);
+            var accountNumber = Convert.ToInt32(controls["AccountNumber"]);
+
+
+            var amount = Convert.ToDecimal(controls["Amount"]);
+            Bank.Deposit(accountNumber, amount);
+
+            return RedirectToAction(nameof(Index));
+
         }
     }
 }
